@@ -4,11 +4,11 @@ public class RedBlackBSTInventoryIndex implements InventoryIndex
     // Atributo interno que utiliza la clase balanceada de Princeton
     private RedBlackBST<Integer, InventoryItem> st;
 
-    // Constructor que inicializa el árbol balanceado vacío
+    // Constructor que inicializa el arbol balanceado vacio
     public RedBlackBSTInventoryIndex() { this.st = new RedBlackBST<>(); }
 
     @Override
-    public void put(Integer key, InventoryItem value) { st.put(key, value); } // Delega la inserción balanceada
+    public void put(Integer key, InventoryItem value) { st.put(key, value); } // Delega la insercion balanceada
 
     @Override
     public InventoryItem get(Integer key) { return st.get(key); }

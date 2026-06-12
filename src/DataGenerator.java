@@ -26,7 +26,7 @@ public class DataGenerator
     {
         StdRandom.setSeed(seed); // Fijar la semilla
         ArrayList<InventoryOperation> operations = new ArrayList<>(m);
-        Set<Integer> currentInventoryIds = new HashSet<>(); // Estructura interna para controlar si un ID ya está en el inventario o no
+        Set<Integer> currentInventoryIds = new HashSet<>(); // Estructura interna para controlar si un ID ya esta en el inventario o no
         for (int i = 0; i < m; i++)
         {
             int key = StdRandom.uniform(1, keyUniverse + 1); // Clave aleatoria entre 1 y keyUniverse (ambos inclusivos)
@@ -38,7 +38,7 @@ public class DataGenerator
             { // 35% de probabilidad
                 type = OperationType.PURCHASE;
                 quantity = StdRandom.uniform(1, 6); // Rango de 1 a 5
-                // Si la clave no está en el inventario, creamos el ítem
+                // Si la clave no esta en el inventario, creamos el ítem
                 if (!currentInventoryIds.contains(key))
                 {
                     item = generateItem(key);

@@ -18,7 +18,7 @@ public class Experimento
 
     public void run() {
         // Tamaños m = 2^t, con t desde 12 hasta 19
-        int[] tValues = {12, 13, 14, 15, 16, 17, 18, 19};
+        int[] tValues = { 12, 13, 14, 15, 16, 17, 18, 19 };
         File dataDir = new File("data");
         if (!dataDir.exists()) { dataDir.mkdirs(); }
         for (int t : tValues)
@@ -46,11 +46,9 @@ public class Experimento
                     writeMetrics(writer, i, "BST", m, mBST);
                     writeMetrics(writer, i, "RedBlackBST", m, mRB);
                 }
-                System.out.println("Archivo " + filename + " guardado con éxito.");
             }
             catch (IOException e) { System.err.println("Error al escribir el archivo: " + e.getMessage()); }
         }
-        System.out.println("¡Todos los experimentos finalizaron exitosamente!");
     }
     // Metodo que ejecuta las operaciones y retorna las metricas
     private Metrics executeAndMeasure(InventoryIndex index, ArrayList<InventoryOperation> ops)
@@ -99,13 +97,13 @@ public class Experimento
     {
         // El tamaño final debe ser exactamente el mismo
         if (bst.size() != rb.size()) { throw new RuntimeException("Los tamaños finales no coinciden."); }
-        // Validamos hasta 100 claves (Regla 2, 4, 5 y 6 combinadas)
+        // Validamos hasta 100 claves
         int count = 0;
         for (Integer key : bst.keys())
         {
             InventoryItem itemB = bst.get(key);
             InventoryItem itemR = rb.get(key);
-            // Verificamos nulos y consistencia en ambos árboles
+            // Verificamos nulos y consistencia en ambos arboles
             if (itemR == null || !itemB.getName().equals(itemR.getName()) || itemB.getStockAvailable() != itemR.getStockAvailable()) { throw new RuntimeException("Inconsistencia entre BST y RedBlackBST en clave " + key); }
             // No stocks negativos
             if (itemB.getStockAvailable() < 0 || itemB.getStockOnLoan() < 0) { throw new RuntimeException("Stocks negativos detectados en " + key); }
